@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Story Productions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero section background image */
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/1a1a1a/fff?text=Studio+Story+production');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Custom image gallery for a grid layout */
+        .image-gallery img {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* CSS for fade-in scroll animation */
+        .fade-in-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* New 3D Gallery CSS */
+        .gallery-container {
+            width: 300px;
+            height: 450px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: gallary 40s linear infinite;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        .gallery-container span {
+            position: absolute;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
+        }
+
+        .gallery-container img {
+            height: 350px;
+            width: 200px;
+            border-radius: 10px;
+            border: 2px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            animation: scrollImage 4s ease-in-out infinite;
+        }
+
+        .gallery-container span:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes gallary {
+            from {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+            to {
+                transform: perspective(1000px) rotateY(360deg);
+            }
+        }
+        
+        @keyframes scrollImage {
+            0%  { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Custom spinner for loading state */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #F79646;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-900 text-neutral-200">
+
+    <header class="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-sm shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="text-2xl font-extrabold text-orange-400 tracking-wide">
+                STUDIO STORY
+            </a>
+            <ul class="flex space-x-6 md:space-x-8 lg:space-x-12">
+                <li><a href="#about" class="text-sm md:text-base hover:text-orange-400 transition-colors">About</a></li>
+                <li><a href="#sets" class="text-sm md:text-base hover:text-orange-400 transition-colors">Sets</a></li>
+                
+                <li><a href="#gallery-3d" class="text-sm md:text-base hover:text-orange-400 transition-colors">3D Gallery</a></li>
+                <li><a href="#pricing" class="text-sm md:text-base hover:text-orange-400 transition-colors">Pricing</a></li>
+                <li><a href="#policies" class="text-sm md:text-base hover:text-orange-400 transition-colors">Policies</a></li>
+                <li><a href="#contact" class="text-sm md:text-base hover:text-orange-400 transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="relative h-screen flex items-center justify-center text-center text-white hero-bg">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 p-8 md:p-12 lg:p-20 bg-black/40 rounded-xl shadow-2xl backdrop-blur-sm">
+            <h1 class="text-4xl md:text-6xl lg:text-8xl font-black mb-4 tracking-tight leading-tight">
+              <marquee>  STUDIO STORY PRODUCTIONS </marquee>
+            </h1>
+            <p class="text-lg md:text-2xl lg:text-3xl font-semibold text-orange-400 tracking-wide">
+                PREMIER COMMERCIAL STUDIO FOR HIGH-END PRODUCTIONS
+            </p>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-24 lg:py-32 container mx-auto px-6 fade-in-container">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">INTRODUCING STUDIO STORY PRODUCTIONS</h2>
+            <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                Jaipur’s First-of-Its-Kind Commercial Product Visual Arts Studio, offering premier production, fully equipped rental spaces, and flexible set modifications.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
+                <div class="text-4xl text-orange-400 mb-4">✨</div>
+                <h3 class="text-2xl font-semibold mb-2">Flexible</h3>
+                <p class="text-neutral-400">Adaptable to your creative needs with movable and customizable sets.</p>
+            </div>
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
+                <div class="text-4xl text-orange-400 mb-4">🤝</div>
+                <h3 class="text-2xl font-semibold mb-2">Professional</h3>
+                <p class="text-neutral-400">Equipped with high-end gear and a professional, noise-free environment.</p>
+            </div>
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
+                <div class="text-4xl text-orange-400 mb-4">🎨</div>
+                <h3 class="text-2xl font-semibold mb-2">Creativity Environment</h3>
+                <p class="text-neutral-400">A space designed to foster and inspire your artistic vision.</p>
+            </div>
+        </div>
+        <div class="mt-20">
+            <h3 class="text-center text-2xl font-bold mb-6 text-orange-400">Who We Serve</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">01</span>
+                    <p>Businesses and Corporates</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">02</span>
+                    <p>Entertainment & Media Industry</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">03</span>
+                    <p>Influencers and Content Creators</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">04</span>
+                    <p>Advertising & Marketing Agencies</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">05</span>
+                    <p>Event Planners & Designers</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">06</span>
+                    <p>Other Creative Professionals</p>
+                </div>
+                <div class="bg-neutral-800 p-4 rounded-lg flex items-center space-x-3 shadow-md">
+                    <span class="text-xl text-orange-400">07</span>
+                    <p>Fashion & Lifestyle Brands</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sets" class="py-20 md:py-24 lg:py-32 bg-neutral-800 fade-in-container">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">STUDIO SPACE RENTAL</h2>
+                <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                    A 2,500 sq. ft. versatile space with over 15 pre-designed sets.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <div class="space-y-8">
+                    <div class="p-6 bg-neutral-900 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-orange-400 mb-2">START WITH THE PERFECT HOUR</h3>
+                        <p class="text-neutral-400">
+                            Need a quick shoot? Book the exact time you need with tailored pricing, ensuring efficiency and cost-effectiveness for short, high-impact projects.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-neutral-900 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-orange-400 mb-2">POWER THROUGH A FULL DAY</h3>
+                        <p class="text-neutral-400">
+                            8-10 hours of uninterrupted creative time, complete with standard setups and essential props. Focus on your vision while we provide the perfect backdrop.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-neutral-900 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-orange-400 mb-2">SEAMLESS OVERTIME OPTIONS</h3>
+                        <p class="text-neutral-400">
+                            Creativity doesn't follow a clock. Extend your session effortlessly if your shoot runs longer than planned—so you never miss the perfect shot.
+                        </p>
+                    </div>
+                </div>
+                <div class="image-gallery grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <img src="images/17.jpg" alt="Studio set 1" class="w-full h-auto rounded-xl shadow-lg object-cover">
+					
+										<video width="640" height="360" style="border-radius:10%;" controls autoplay loop muted>
+  <source src="image/Studio1.mp4" type="video/mp4">
+  <source src="your-video.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+				<img src="image/f2.jpg" alt="Studio set 3" class="w-full h-auto rounded-xl shadow-lg object-cover">
+                    <img src="image/17.jpg" alt="Studio set 4" class="w-full h-auto rounded-xl shadow-lg object-cover">
+					
+				
+					
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="gallery-3d" class="py-20 md:py-24 lg:py-32 container mx-auto px-6 fade-in-container">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4" style="padding-bottom:10px;">EXPLORE OUR STUDIO IN 3D</h2>
+            <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                Drag your mouse to rotate and view our creative sets from a new perspective.
+            </p>
+        </div>
+        <div class="gallery-container">
+            <span style="--i:1"><img src="images/17.jpg" alt="Studio Set 1"></span>
+            							<span style="--i:2">	<video  height="350px" width="200px" style="border-radius:10%;" controls autoplay loop muted>
+  <source src="images/Studio.mp4" type="video/mp4">
+  <source src="your-video.webm" type="video/webm"> </span>
+            <span style="--i:3"><img src="image/17.jpg" alt="Studio Set 3"></span>
+            <span style="--i:4"><img src="image/17.jpg" alt="Studio Set 4"></span>
+            <span style="--i:5"><img src="image/17.jpg" alt="Studio Set 5"></span>
+            <span style="--i:6"><img src="image/17.jpg" alt="Studio Set 6"></span>
+            <span style="--i:7"><img src="image/17.jpg" alt="Studio Set 7"></span>
+	        <span style="--i:8"><img src="image/17.jpg" alt="Studio Set 8"></span>
+        
+		
+		
+		</div>
+    </section>
+    
+    <section id="livestream" class="py-20 md:py-24 lg:py-32 container mx-auto px-6 fade-in-container">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">LIVE STREAMING & PODCAST READY SETUP</h2>
+            <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                Flexible usage options for high-quality broadcasts and crystal-clear recordings.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-orange-400 mb-2">HD & 4K Streaming</h3>
+                <p class="text-neutral-400">High-quality video for engaging broadcasts, capturing every angle for dynamic presentations.</p>
+            </div>
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-orange-400 mb-2">Noise Cancellation Mics</h3>
+                <p class="text-neutral-400">Crystal-clear audio with minimal distractions in our sound-proof space.</p>
+            </div>
+            <div class="bg-neutral-800 p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-orange-400 mb-2">Ideal for Podcasts & Events</h3>
+                <p class="text-neutral-400">Perfect for interviews, webinars, discussions, and other live events.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 md:py-24 lg:py-32 bg-neutral-800 fade-in-container">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">STUDIO RENTAL & EQUIPMENT PRICING</h2>
+                <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                    Transparent pricing for our studio space and premium equipment.
+                </p>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="text-center text-2xl font-semibold text-orange-400 mb-6">STUDIO RENTAL (EXCLUDING EQUIPMENT & ELECTRICITY*)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full max-w-3xl mx-auto text-left rounded-xl overflow-hidden shadow-xl">
+                        <thead class="bg-neutral-900 text-neutral-200">
+                            <tr>
+                                <th class="p-4">Duration</th>
+                                <th class="p-4">Price (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">Per Hour</td>
+                                <td class="p-4">2,999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">4 Hours</td>
+                                <td class="p-4">9,999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">8 Hours</td>
+                                <td class="p-4">15,999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">10 Hours</td>
+                                <td class="p-4">19,999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">12 Hours</td>
+                                <td class="p-4">23,999/-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-sm mt-4 text-neutral-500">*Electricity billed separately at ₹15/unit.</p>
+            </div>
+
+            <div>
+                <h3 class="text-center text-2xl font-semibold text-orange-400 mb-6">PREMIUM EQUIPMENT* (CHARGED PER DAY)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full max-w-3xl mx-auto text-left rounded-xl overflow-hidden shadow-xl">
+                        <thead class="bg-neutral-900 text-neutral-200">
+                            <tr>
+                                <th class="p-4">Equipment Description</th>
+                                <th class="p-4">Qty/Units</th>
+                                <th class="p-4">Price (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">Profoto B1X Flashlight + 1 Battery + Air Remote</td>
+                                <td class="p-4">1 Unit</td>
+                                <td class="p-4">2,999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">Profoto RFi Octa Softbox 5ft (150 cm)</td>
+                                <td class="p-4">1 Unit</td>
+                                <td class="p-4">999/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">Profoto RFi 1x6 ft Strip Box</td>
+                                <td class="p-4">1 Unit</td>
+                                <td class="p-4">799/-</td>
+                            </tr>
+                            <tr class="bg-neutral-700 hover:bg-neutral-600 transition-colors">
+                                <td class="p-4">Infinity Wall Charges</td>
+                                <td class="p-4">half day / full day</td>
+                                <td class="p-4">14,999/- / 29,999/-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-sm mt-4 text-neutral-500">*Included Basic Equipment (No Extra Charge): Lighting kit, Basic props, Standard backdrops.</p>
+                <p class="text-center text-sm mt-1 text-neutral-500">Video Lights, Flashlights, Softboxes are also available, please confirm availability and additional charges.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="policies" class="py-20 md:py-24 lg:py-32 container mx-auto px-6 fade-in-container">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">OUR POLICIES</h2>
+            <p class="text-lg text-neutral-400 max-w-3xl mx-auto">
+                Important information to ensure a smooth and professional experience.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Equipment</h4>
+                <p>Extra charges apply for premium gear. Please confirm availability while booking.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Refunds</h4>
+                <p>Cancellation $\ge$48 hours: credit valid for 1 month. No refunds; if approved, takes 5–7 days.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Pack-Up Time</h4>
+                <p>15–20 minute grace period. Overtime charges apply beyond booked hours.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Damages & Liability</h4>
+                <p>Client pays for damages. Studio is not liable for crew or equipment.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Crew Limit</h4>
+                <p>Maximum 15 people. ₹800 per extra person.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Strictly Prohibited</h4>
+                <p>No smoking, alcohol, or drugs allowed on the premises.</p>
+            </div>
+			
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Clean-Up & Reset</h4>
+                <p>Client must clean after shoot. Reset by 7 AM or incur a ₹1500 fee.</p>
+            </div>
+            <div class="bg-neutral-800 p-6 rounded-xl shadow-lg">
+                <h4 class="font-semibold text-orange-400 mb-2">Payment</h4>
+                <p>Full payment before the shoot. 100% fee if cancelled within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-neutral-900 py-16 md:py-20 lg:py-24 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-400 mb-4">BOOK YOUR STUDIO TODAY!</h2>
+            <p class="text-lg text-neutral-400 mb-8">
+                Ready to create your next masterpiece? We're here to help.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-neutral-400 mb-8">
+                <a href="https://www.instagram.com/studiostoryproductions/" target="_blank" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    <span>@studiostoryproductions</span>
+                </a>
+                <a href="tel:9999956749" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.7-6.7A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>9999956749</span>
+                </a>
+                <a href="mailto:studiostoryproductions@gmail.com" class="flex items-center space-x-2 hover:text-orange-400 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <span>studiostoryproductions@gmail.com</span>
+                </a>
+            </div>
+            <div class="text-sm text-neutral-500 mt-4">
+                <p>Plot no. 392, Gali no. 2, Rajapark, Jaipur, Rajasthan</p>
+                <p>&copy; 2024 Studio Story Productions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // --- Scroll-Triggered Animations ---
+        const faders = document.querySelectorAll('.fade-in-container');
+        const appearOptions = { threshold: 0.2 };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // --- New 3D Gallery JavaScript ---
+        const container = document.querySelector('.gallery-container');
+        let angle = 0;
+
+        if (container) {
+            container.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const center = window.innerWidth / 2;
+                angle = ((x - center) / center) * 30;
+                container.style.transform = `perspective(1000px) rotateY(${angle}deg)`;
+            });
+        }
+        
+
+        // --- Creative Brief Generator using Gemini API ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-brief-btn');
+            const projectIdeaInput = document.getElementById('project-idea');
+            const briefOutputContainer = document.getElementById('brief-output-container');
+            const briefOutput = document.getElementById('brief-output');
+            const loadingSpinner = document.getElementById('loading-spinner');
+
+            generateBtn.addEventListener('click', async () => {
+                const promptText = projectIdeaInput.value.trim();
+                if (promptText === '') {
+                    briefOutput.innerHTML = '<p class="text-red-400">Please enter a project idea to get started!</p>';
+                    briefOutputContainer.classList.remove('hidden');
+                    return;
+                }
+
+                loadingSpinner.classList.remove('hidden');
+                briefOutputContainer.classList.add('hidden');
+                generateBtn.disabled = true;
+
+                let retries = 0;
+                const maxRetries = 3;
+                const baseDelay = 1000;
+
+                const callAPI = async () => {
+                    try {
+                        const prompt = `You are a creative assistant for a photography studio. Your goal is to help clients brainstorm their photoshoot ideas. Based on the following project description, generate a detailed creative brief. The brief should be structured into these sections using markdown headings and lists:
+- Project Title
+- Summary
+- Key Concepts & Mood
+- Suggested Color Palette
+- Example Shot List
+
+Project Description: ${promptText}`;
+
+                        const chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`API error: ${response.statusText}`);
+                        }
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const generatedText = result.candidates[0].content.parts[0].text;
+                            briefOutput.innerText = generatedText;
+                            briefOutputContainer.classList.remove('hidden');
+                        } else {
+                            briefOutput.innerHTML = '<p class="text-red-400">Could not generate a brief. Please try again.</p>';
+                            briefOutputContainer.classList.remove('hidden');
+                        }
+                    } catch (error) {
+                        console.error('Error fetching from Gemini API:', error);
+                        if (retries < maxRetries) {
+                            retries++;
+                            const delay = baseDelay * Math.pow(2, retries);
+                            console.log(`Retrying in ${delay / 1000}s...`);
+                            setTimeout(callAPI, delay);
+                        } else {
+                            briefOutput.innerHTML = '<p class="text-red-400">Failed to generate a brief after multiple attempts. Please try again later.</p>';
+                            briefOutputContainer.classList.remove('hidden');
+                        }
+                    } finally {
+                        if (retries >= maxRetries || briefOutputContainer.classList.contains('hidden') === false) {
+                            loadingSpinner.classList.add('hidden');
+                            generateBtn.disabled = false;
+                        }
+                    }
+                };
+
+                callAPI();
+            });
+        });
+    </script>
+</body>
+</html>
